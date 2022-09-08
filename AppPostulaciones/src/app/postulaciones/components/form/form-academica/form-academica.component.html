@@ -1,0 +1,60 @@
+<div [formGroup]="aspiranteForm">
+
+  <div class="row my-4 align-items-center">
+    <div class="col-auto">
+      <button class="btn btn-sm btn-outline-success" (click)="addFormacionAcademica()" type="button">Agregar Formación
+        Academica</button>
+    </div>
+  </div>
+
+  <ng-container formArrayName="formacionAcademica">
+    <ng-container *ngFor="let academico of getControls(); let f1 = index" [formGroupName]="f1">
+      <div class="card mt-3">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6>#{{ f1 + 1 }}</h6>
+            </div>
+
+            <div class="col-auto">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeFormacionAcademica(f1)">Eliminar x</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label [for]="'pais-' + f1" class="form-label">Pais</label>
+                <input type="text" [id]="'pais' + f1" class="form-control" formControlName="pais">
+              </div>
+              <div class="mb-3">
+                <label [for]="'institucion-' + f1" class="form-label">Institución</label>
+                <input type="text" [id]="'institucion' + f1" class="form-control" formControlName="institucion">
+              </div>
+              <div class="mb-3">
+                <label [for]="'titulo-' + f1" class="form-label">Título</label>
+                <input type="text" [id]="'titulo' + f1" class="form-control" formControlName="titulo">
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label [for]="'nivelFormacion-' + f1" class="form-label">Nivel de Formación</label>
+                <input type="text" [id]="'nivelFormacion' + f1" class="form-control" formControlName="nivelFormacion">
+              </div>
+              <div class="mb-3">
+                <label [for]="'duracion-' + f1" class="form-label">Duración</label>
+                <input type="text" [id]="'duracion' + f1" class="form-control" formControlName="duracion">
+              </div>
+              <div class="mb-3">
+                <label [for]="'periodo-' + f1" class="form-label">Periodo</label>
+                <input type="text" [id]="'periodo' + f1" class="form-control" formControlName="periodo">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

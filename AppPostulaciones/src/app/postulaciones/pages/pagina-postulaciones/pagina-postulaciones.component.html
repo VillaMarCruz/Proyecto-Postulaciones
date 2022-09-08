@@ -1,0 +1,80 @@
+<app-menu></app-menu>
+<div class="container mt-3">
+  <div class="row" *ngFor="let aspirante of aspirantes">
+    <div class="col-lg-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ aspirante.nombres }} {{ aspirante.apellidos }}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Cédula / Pasaporte: {{ aspirante.documentoIdentidad }}
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Libreta Militar:
+            {{ aspirante.libretaMilitar || "No disponible" }}
+          </h6>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Contacto</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fa-solid fa-envelope"></i>
+              {{ aspirante.correoPersonal }}
+            </li>
+            <li class="list-group-item">
+              <i class="fa-solid fa-envelope"></i>
+              {{ aspirante.correoAlternativo }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-grid mt-3 gap-2" *ngIf="isUser">
+        <button class="btn btn-success" type="button" routerLink="/postulaciones/editar-cv/{{aspirante._id}}">Editar</button>
+        <button class="btn btn-danger" type="button" (click)="onDelete()">Eliminar</button>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" routerLink="/postulaciones/cv-aspirante/{{aspirante.UserId}}">Curriculum</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" routerLink="/postulaciones/mis-postulaciones/{{aspirante.UserId}}">Mis postulaciones</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Postulaciones</h5>
+          <div
+            class="row mb-2"
+            *ngFor="let postulacion of aspirante.postulaciones"
+          >
+            <div class="col-1">
+              <i class="fa-sharp fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div class="col-11">
+              <div class="row">
+                <div class="col">
+                  <h6 class="card-title">{{ postulacion.puesto }}</h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ postulacion.departamento }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ postulacion.salario | currency: "USD" }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,125 @@
+<div [formGroup]="aspiranteForm" class="row">
+  <div class="col">
+    <div class="mb-3">
+      <label for="documentoIdentidad">Número de Cédula / pasaporte</label>
+      <input class="form-control" type="text" id="documentoIdentidad" name="documentoIdentidad" required
+        formControlName="documentoIdentidad" />
+    </div>
+    <div class="mb-3">
+      <label for="libretaMilitar">Número de libreta militar</label>
+      <input class="form-control" type="text" id="libretaMilitar" name="libretaMilitar" required
+        formControlName="libretaMilitar" />
+    </div>
+    <div class="mb-3">
+      <label for="apellidos">Apellidos</label>
+      <input class="form-control" type="text" id="apellidos" name="apellidos" required formControlName="apellidos" />
+    </div>
+    <div class="mb-3">
+      <label for="nombres">Nombres</label>
+      <input class="form-control" type="text" id="nombres" name="nombres" required formControlName="nombres" />
+    </div>
+    <div class="mb-3">
+      <label for="fechaNacimiento">Fecha de Nacimiento</label>
+      <input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" required
+        formControlName="fechaNacimiento" />
+    </div>
+    <div class="mb-3">
+      <label for="sexo">Sexo</label>
+      <div class="row align-content-center">
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sexo" id="hombre" value="Hombre"
+              formControlName="sexo" />
+            <label class="form-check-label" for="hombre">Hombre</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="sexo" id="mujer" value="Mujer" formControlName="sexo" />
+            <label class="form-check-label" for="mujer">Mujer</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="estadoCivil">Estado Civil</label>
+      <select class="form-select" id="estadoCivil" name="estadoCivil" formControlName="estadoCivil">
+        <option value="Soltero/a">Soltero/a</option>
+        <option value="Union de hecho">Union de hecho</option>
+        <option value="Casado/a">Casado/a</option>
+        <option value="Divorciado/a">Divorciado/a</option>
+        <option value="Viudo/a">Viudo/a</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="col">
+    <div class="mb-3">
+      <label for="conyuge">Conyuge</label>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="conyuge" id="conyuge1" value="Si"
+              formControlName="conyuge" />
+            <label class="form-check-label" for="conyuge">Si</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="conyuge" id="conyuge2" value="No"
+              formControlName="conyuge" />
+            <label class="form-check-label" for="conyuge">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="discapacidad">Discapacidad</label>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="discapacidad" id="discapacidad1" value="Si"
+              formControlName="discapacidad" />
+            <label class="form-check-label" for="discapacidad">Si</label>
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="discapacidad" id="discapacidad2" value="No"
+              formControlName="discapacidad" />
+            <label class="form-check-label" for="discapacidad">No</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="carnetConadis">Carnet CONADIS</label>
+      <input class="form-control" type="text" id="carnetConadis" name="carnetConadis" required
+        formControlName="carnetConadis" />
+    </div>
+    <div class="mb-3">
+      <label for="etnia">Autodefinición Etnica</label>
+      <input class="form-control" type="text" id="etnia" name="etnia" required formControlName="etnia" />
+    </div>
+
+    <div class="mb-3">
+      <label for="nacionalidad">Nacionalidad</label>
+      <input class="form-control" type="text" id="nacionalidad" name="nacionalidad" required
+        formControlName="nacionalidad" />
+    </div>
+
+    <div class="mb-3">
+      <label for="correoPersonal">Correo electrónico personal</label>
+      <input class="form-control" type="email" id="correoPersonal" name="correoPersonal" required
+        formControlName="correoPersonal" />
+    </div>
+
+    <div class="mb-3">
+      <label for="correoAlternativo">Correo electrónico alternativo</label>
+      <input class="form-control" type="email" id="correoAlternativo" name="correoAlternativo" required
+        formControlName="correoAlternativo" />
+    </div>
+  </div>
+</div>

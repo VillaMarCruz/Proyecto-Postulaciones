@@ -1,0 +1,9 @@
+body {
+  background: rgb(124, 238, 238);
+  background: linear-gradient(to right, rgb(5, 178, 187), rgb(192, 246, 249));
+}
+
+.bg {
+  background-image: url(https://cloudfront-us-east-1.images.arcpublishing.com/infobae/HX7UIFYVW5BHRHUY7WOXQMX4TU.jpg);
+  background-position: center center;
+}

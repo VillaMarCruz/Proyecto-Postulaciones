@@ -1,0 +1,47 @@
+<app-menu></app-menu>
+<div class="container mt-3">
+  <div class="card">
+    <div class="card-header text-center">
+      <h5 class="card-title">Lista de cargos</h5>
+    </div>
+    <div class="card-body">
+
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Puesto</th>
+              <th scope="col">Departamento</th>
+              <th scope="col">Requisitos</th>
+              <th scope="col">Salario</th>
+              <th scope="col">Ver</th>
+              <th scope="col">Editar</th>
+              <th scope="col">Eliminar</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let item of cargos; let i=index" >
+              <td>{{i+1}}</td>
+              <td>{{item.puesto}}</td>
+              <td>{{item.departamento}}</td>
+              <td>
+                <ul>
+                  <li *ngFor="let item of item.requisitos">
+                    {{item}}
+                  </li>
+                </ul>
+              </td>
+              <td>{{item.salario | currency: "USD"}}</td>
+              <td><button class="btn btn-outline-info"  routerLink="/postulaciones/detalle-cargo/{{item._id}}"><i class="far fa-eye"></i></button></td>
+              <td><button class="btn btn-outline-warning" routerLink="/postulaciones/editar-cargo/{{item._id}}"><i class="far fa-edit"></i></button></td>
+              <td><button class="btn btn-outline-danger" (click)="onDelete(item._id)"><i class="far fa-trash-alt"></i></button></td>
+          </tr>
+      </tbody>
+  </table>
+    </div>
+  </div>
+  <div class="mt-3">
+      <button class="btn btn-outline-success btn-lg" routerLink="/postulaciones/nuevo-cargo">
+    <i class="fas fa-plus-circle"></i> Agregar nuevo cargo</button>
+  </div>
+</div>

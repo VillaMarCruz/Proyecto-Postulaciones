@@ -1,0 +1,227 @@
+<app-menu></app-menu>
+<div class="container mt-3">
+  <div class="row" *ngFor="let aspirante of aspirantes">
+    <div class="col-lg-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <h5 class="card-title">
+            {{ aspirante.nombres }} {{ aspirante.apellidos }}
+          </h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Cédula / Pasaporte: {{ aspirante.documentoIdentidad || "No disponible"  }}
+          </h6>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Libreta Militar:
+            {{ aspirante.libretaMilitar || "No disponible" }}
+          </h6>
+        </div>
+      </div>
+      <div class="card mt-3">
+        <div class="card-body">
+          <h5 class="card-title">Contacto</h5>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <i class="fa-solid fa-envelope"></i>
+              {{ aspirante.correoPersonal }}
+            </li>
+            <li class="list-group-item">
+              <i class="fa-solid fa-envelope"></i>
+              {{ aspirante.correoAlternativo }}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-grid mt-3 gap-2" *ngIf="isUser">
+        <button class="btn btn-success" type="button" routerLink="/postulaciones/editar-cv/{{aspirante._id}}">Editar</button>
+        <button class="btn btn-danger" type="button" (click)="onDelete()">Eliminar</button>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card mb-3">
+        <div class="card-body">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" routerLink="/postulaciones/cv-aspirante/{{aspirante.UserId}}">Curriculum</a>
+            </li>
+            <li class="nav-item" *ngIf="isUser">
+              <a class="nav-link" routerLink="/postulaciones/mis-postulaciones/{{aspirante.UserId}}">Mis postulaciones</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Datos Personales</h5>
+          <div class="row">
+            <div class="col">
+              <p>
+                <b>Fecha de Nacimiento: </b
+                >{{ aspirante.fechaNacimiento | date: "mediumDate":"-05:00" }}
+              </p>
+              <p><b>Género: </b> {{ aspirante.sexo || "No disponible"  }}</p>
+              <p><b>Estado civil: </b> {{ aspirante.estadoCivil || "No disponible"  }}</p>
+              <p><b>Conyuge: </b> {{ aspirante.conyuge || "No disponible"  }}</p>
+            </div>
+            <div class="col">
+              <p><b>Discapacidad: </b> {{ aspirante.discapacidad || "No disponible"  }}</p>
+              <p><b>Carnet Conadis: </b> {{ aspirante.carnetConadis || "No disponible"  }}</p>
+              <p><b>Etnia: </b> {{ aspirante.etnia || "No disponible"  }}</p>
+              <p><b>Nacionalidad: </b> {{ aspirante.nacionalidad || "No disponible"  }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Formación académica</h5>
+          <div
+            class="row mb-2"
+            *ngFor="let formacionAcademica of aspirante.formacionAcademica"
+          >
+            <div class="col-1">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+            <div class="col-11">
+              <h6 class="card-title">{{ formacionAcademica.titulo }}</h6>
+              <h6 class="card-subtitle text-muted">
+                {{ formacionAcademica.institucion }}
+              </h6>
+              <h6 class="card-subtitle text-muted">
+                {{ formacionAcademica.pais }}
+              </h6>
+              <h6 class="card-subtitle text-muted">
+                {{ formacionAcademica.periodo }}
+              </h6>
+              <h6 class="card-subtitle text-muted">
+                {{ formacionAcademica.duracion }} horas
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Capacitaciones</h5>
+          <div
+            class="row mb-2"
+            *ngFor="let capacitacion of aspirante.capacitaciones"
+          >
+            <div class="col-1">
+              <i class="fa-sharp fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div class="col-11">
+              <div class="row">
+                <div class="col">
+                  <h6 class="card-title">{{ capacitacion.evento }}</h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ capacitacion.auspiciante }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ capacitacion.pais }}
+                  </h6>
+                </div>
+                <div class="col">
+                  <h6 class="card-subtitle text-muted">
+                    Inicio:
+                    {{ capacitacion.fechaInicio | date: "mediumDate":"-05:00" }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    Fin:
+                    {{ capacitacion.fechaFin | date: "mediumDate":"-05:00" }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ capacitacion.duracion }} horas
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Información Laboral</h5>
+          <div
+            class="row mb-2"
+            *ngFor="let laboral of aspirante.informacionLaboral"
+          >
+            <div class="col-1">
+              <i class="fa-sharp fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div class="col-11">
+              <div class="row">
+                <div class="col">
+                  <h6 class="card-title">{{ laboral.institucion }}</h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ laboral.tipoInstitucion }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ laboral.puesto }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ laboral.unidad }}
+                  </h6>
+                </div>
+                <div class="col">
+                  <h6 class="card-subtitle text-muted">
+                    Inicio:
+                    {{ laboral.fechaInicio | date: "mediumDate":"-05:00" }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    Fin:
+                    {{ laboral.fechaFin | date: "mediumDate":"-05:00" }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ laboral.motivoSalida }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Referencias Personales</h5>
+          <div
+            class="row mb-2"
+            *ngFor="let referencia of aspirante.referenciasPersonales"
+          >
+            <div class="col-1">
+              <i class="fa-sharp fa-solid fa-chalkboard-user"></i>
+            </div>
+            <div class="col-11">
+              <div class="row">
+                <div class="col">
+                  <h6 class="card-title">{{ referencia.documentoIdentidad }}</h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ referencia.nombres }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ referencia.puesto }}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ referencia.institucion }}
+                  </h6>
+                </div>
+                <div class="col">
+                  <h6 class="card-subtitle text-muted">
+                    Inicio:
+                    {{ referencia.direccionInstitucion}}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    Fin:
+                    {{ referencia.telefono}}
+                  </h6>
+                  <h6 class="card-subtitle text-muted">
+                    {{ referencia.correo }}
+                  </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

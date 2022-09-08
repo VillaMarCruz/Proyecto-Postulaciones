@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">LytaJobs</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!isAdmin">
+          <a class="nav-link" routerLink="/postulaciones/cv-aspirante/{{UserId}}">Mi currículum</a>
+        </li>
+        <li class="nav-item" *ngIf="!isAdmin">
+          <a class="nav-link" aria-current="page" routerLink="/postulaciones/ofertas">Ofertas</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" aria-current="page" routerLink="/postulaciones/lista-aspirantes">Aspirantes</a>
+        </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" aria-current="page" routerLink="/postulaciones/lista-cargos">Cargos</a>
+        </li>
+      </ul>
+      <div>
+        <button class="btn btn-outline-success" (click)="onLogOut()" type="reset">Cerrar Sessión</button>
+      </div>
+    </div>
+  </div>
+</nav>

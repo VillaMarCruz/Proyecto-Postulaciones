@@ -1,0 +1,76 @@
+<div [formGroup]="aspiranteForm">
+
+  <div class="row my-4 align-items-center">
+    <div class="col-auto">
+      <button class="btn btn-sm btn-outline-success" (click)="addInformacionLaboral()" type="button">Agregar Información Laboral</button>
+    </div>
+  </div>
+
+  <ng-container formArrayName="informacionLaboral">
+    <ng-container *ngFor="let academico of getControls(); let f1 = index" [formGroupName]="f1">
+      <div class="card mt-3">
+        <div class="card-header">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6>#{{ f1 + 1 }}</h6>
+            </div>
+
+            <div class="col-auto">
+              <button type="button" class="btn btn-danger btn-sm" (click)="removeInformacionLaboral(f1)">Eliminar x</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="tipoInstitucion">Tipo de Institución</label>
+                <select class="form-select" id="tipoInstitucion" name="tipoInstitucion" formControlName="tipoInstitucion">
+                  <option value="Pública">Pública</option>
+                  <option value="Privada">Privada</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label for="institucion">Institución/Organización</label>
+                <input class="form-control" type="text" id="institucion" name="institucion" required
+                  formControlName="institucion" />
+              </div>
+              <div class="mb-3">
+                <label for="unidad">Unidad/Departamento</label>
+                <input class="form-control" type="text" id="unidad" name="unidad" required
+                  formControlName="unidad" />
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="puesto">Puesto</label>
+                <input class="form-control" type="text" id="puesto" name="puesto" required
+                  formControlName="puesto" />
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="mb-3">
+                    <label [for]="'fechaInicio-' + f1" class="form-label">Fecha de Inicio</label>
+                    <input type="date" [id]="'fechaInicio' + f1" class="form-control" formControlName="fechaInicio">
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="mb-3">
+                    <label [for]="'fechaFin-' + f1" class="form-label">Fecha de Fin</label>
+                    <input type="date" [id]="'fechaFin' + f1" class="form-control" formControlName="fechaFin">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="form-floating">
+              <textarea class="form-control" id="motivoSalida" name="motivoSalida" formControlName="motivoSalida"></textarea>
+              <label for="motivoSalida">Motivo de Salida</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+</div>

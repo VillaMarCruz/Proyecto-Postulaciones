@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div class="container">
+  <form (ngSubmit)="onSubmit()" [formGroup]="cargoForm">
+    <div class="mb-3">
+      <label for="puesto">Puesto</label>
+      <input class="form-control" type="text" id="puesto" name="puesto" required
+        formControlName="puesto" />
+    </div>
+    <div class="mb-3">
+      <label for="departamento">Departamento</label>
+      <input class="form-control" type="text" id="departamento" name="departamento" required
+        formControlName="departamento" />
+    </div>
+    <div class="row my-4 align-items-center">
+      <div class="col-auto">
+        <button class="btn btn-sm btn-outline-success" (click)="addRequisito()" type="button">Agregar Requisito</button>
+      </div>
+    </div>
+
+    <ng-container formArrayName="requisitos">
+      <ng-container *ngFor="let academico of getControls(); let f1 = index" [formGroupName]="f1">
+        <div class="d-flex mb-3">
+          <input type="text" [id]="'requisito' + f1" class="form-control me-2" formControlName="requisito">
+          <button type="button" class="btn btn-outline-danger btn-sm" (click)="removeRequisito(f1)"><i class="far fa-trash-alt"></i></button>
+        </div>
+      </ng-container>
+    </ng-container>
+    <div class="mb-3">
+      <label for="salario">Salario</label>
+      <input class="form-control" type="text" id="salario" name="salario" required formControlName="salario" />
+    </div>
+    <button class="mt-3 btn btn-dark form-control">
+      Guardar
+    </button>
+  </form>
+</div>

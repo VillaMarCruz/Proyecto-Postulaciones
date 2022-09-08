@@ -1,0 +1,36 @@
+<app-menu></app-menu>
+<div class="container mt-3">
+  <div class="card text-center">
+    <div class="card-header">
+      <h5 class="card-title">Lista de aspirantes</h5>
+    </div>
+    <div class="card-body">
+      <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Cédula / Pasaporte</th>
+                <th scope="col">Apellidos</th>
+                <th scope="col">Nombres</th>
+                <th scope="col">Discapacidad</th>
+                <th scope="col">Nacionalidad</th>
+                <th scope="col">Correo Personal</th>
+                <th scope="col">Ver</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of aspirantes; let i=index" >
+                <td>{{i+1}}</td>
+                <td>{{item.documentoIdentidad}}</td>
+                <td>{{item.apellidos}}</td>
+                <td>{{item.nombres}}</td>
+                <td>{{item.discapacidad}}</td>
+                <td>{{item.nacionalidad}}</td>
+                <td>{{item.correoPersonal}}</td>
+                <td><button class="btn btn-outline-primary" routerLink="/postulaciones/cv-aspirante/{{item.UserId}}"><i class="far fa-eye"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+  </div>
+</div>

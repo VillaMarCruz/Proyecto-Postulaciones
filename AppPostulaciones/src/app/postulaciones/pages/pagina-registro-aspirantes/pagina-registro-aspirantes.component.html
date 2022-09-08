@@ -1,0 +1,66 @@
+<div class="container d-flex justify-content-center mb-3">
+  <div class="card m-3">
+    <div class="card-header">
+      <h5>Formulario Registro Aspirante</h5>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" [formGroup]="aspiranteFormInit">
+        <div *ngIf="formOpcion === 0">
+          <div class="progress mb-3" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div>
+            <app-form-personal [aspiranteForm]="aspiranteFormInit"></app-form-personal>
+          </div>
+        </div>
+        <div *ngIf="formOpcion === 1">
+          <div class="progress mb-3" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div>
+            <app-form-academica [aspiranteForm]="aspiranteFormInit"></app-form-academica>
+          </div>
+        </div>
+        <div *ngIf="formOpcion === 2">
+          <div class="progress mb-3" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div>
+            <app-form-capacitaciones [aspiranteForm]="aspiranteFormInit"></app-form-capacitaciones>
+          </div>
+        </div>
+        <div *ngIf="formOpcion === 3">
+          <div class="progress mb-3" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 75%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div>
+            <app-form-info-laboral [aspiranteForm]="aspiranteFormInit"></app-form-info-laboral>
+          </div>
+        </div>
+        <div *ngIf="formOpcion === 4">
+          <div class="progress mb-3" style="height: 10px;">
+            <div class="progress-bar bg-success" role="progressbar" aria-label="Success example" style="width: 100%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+          <div>
+            <app-form-ref-personal [aspiranteForm]="aspiranteFormInit"></app-form-ref-personal>
+          </div>
+        </div>
+        <button class="mt-3 btn btn-dark form-control" *ngIf="formOpcion === 4">
+          Guardar
+        </button>
+      </form>
+      <div class="row mt-2" >
+        <div class="col" *ngIf="formOpcion > 0">
+          <button class="btn btn-dark form-control" (click)="back()">
+            Volver
+          </button>
+        </div>
+        <div class="col" *ngIf="formOpcion < 4">
+          <button class="btn btn-dark form-control" (click)="next()">
+            Siguiente
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
